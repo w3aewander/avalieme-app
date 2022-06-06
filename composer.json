@@ -1,0 +1,16 @@
+{
+    "name": "wande/avalieme",
+    "description": "Aplicativo para controle de pautas escolar personalizado",
+    "autoload": {
+        "psr-4": {
+            "Api\\": "src/Api"
+        }
+    },
+    "authors": [
+        {
+            "name": "w3aewander",
+            "email": "wander.silva@gmail.com"
+        }
+    ],
+    "require": {}
+}

@@ -1,0 +1,30 @@
+{"alunos":[
+    {
+        "ra":"20200301",
+        "nome": "Wanderlei Silva do Carmo",
+        "turma":"dds-0201",
+        "curso": "Desenvolvimento de Sistemas",
+        "periodo": "1"
+    },
+    {
+        "ra":"20200402",
+        "nome": "Marileide Silva",
+        "turma":"xyz-0202",
+        "curso": "Desenvolvimento de Sistemas",
+        "periodo": "1"
+    },
+    {
+        "ra":"20200503",
+        "nome": "Adriana Dias do Carmo",
+        "turma":"cde-321",
+        "curso": "Desenvolvimento de Sistemas",
+        "periodo": "2"
+    },
+    {
+        "ra":"20200501",
+        "nome": "Asafe Dias do Carmo",
+        "turma":"xvq-45d",
+        "curso": "Desenvolvimento de Sistemas",
+        "periodo": "1"
+    }]
+}
