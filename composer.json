@@ -3,6 +3,7 @@
     "description": "Aplicativo para controle de pautas escolar personalizado",
     "autoload": {
         "psr-4": {
+            "App\\": "src/app",
             "Api\\": "src/Api"
         }
     },
@@ -12,5 +13,8 @@
             "email": "wander.silva@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "slim/slim": "^4.10",
+        "slim/psr7": "^1.5"
+    }
 }

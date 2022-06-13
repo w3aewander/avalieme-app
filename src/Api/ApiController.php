@@ -11,6 +11,6 @@
 
        $dados = $_REQUEST['data'] ?? "Nada enviado";
        
-       dd($dados);
+       die(var_dump($dados));
     }
  }
