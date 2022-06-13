@@ -58,6 +58,14 @@
                     "class":"btn btn-primary btn-block",
                     "icon":"<i class='fas fa-print'></i>"
 
+                },
+                {
+                    "action":"Listagem de alunos", 
+                    "link":"loadPage('/meusAlunos.html')", 
+                    "title":"buscador de endereço", 
+                    "class":"btn btn-primary btn-block",
+                    "icon":"<i class='fas fa-print'></i>"
+
                 }
     ]
 }
