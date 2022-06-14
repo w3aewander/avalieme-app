@@ -1,0 +1,10 @@
+{
+    "escolas": [
+        {"id": "001", "nome":"Escola A"},
+        {"id": "002", "nome":"Escola B"},
+        {"id": "003", "nome":"Escola C"},
+        {"id": "004", "nome":"Escola D"},
+        {"id": "005", "nome":"Escola E"},
+        {"id": "006", "nome":"Escola F"}
+    ]
+}

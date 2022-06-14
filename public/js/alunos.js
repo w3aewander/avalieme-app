@@ -69,3 +69,5 @@ const incluirAluno = ( ) => {
 
     return false;
 }
+
+module.exports = exibirAlunos()

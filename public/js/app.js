@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', (event) => {
     document.querySelector("#btn-toggle-menu").addEventListener("click", (evt)=>{
        let statusDisplay = document.getElementById("menu-lateral").style.display
@@ -46,8 +47,6 @@ const loadPage = (page) => {
    fetch(page, {header: header, method: 'GET'}).then( resp => {
        resp.text()
        .then(r=>cnt.innerHTML = r)
-       .then(r=>exibirAlunos())
-
    })
 }
 
