@@ -1,6 +1,6 @@
 const exibirAlunos = () => {
 
-    const dados = fetch("data/alunos.json")
+    const dados = fetch("/api/alunos/listar")
     const tbAlunos = document.getElementById("tb-alunos")
 
     dados.then( d => {
@@ -23,7 +23,7 @@ const exibirAlunos = () => {
 
                 const opt = document.createElement("td")
                 btnEditar = document.createElement("a")
-                btnEditar.setAttribute("href", "#")
+                btnEditar.setAttribute("href", "/aluno/editar")
                 btnEditar.classList.add("btn")
                 btnEditar.classList.add("btn-primary")
                 btnEditar.classList.add("btn-sm")
@@ -69,5 +69,3 @@ const incluirAluno = ( ) => {
 
     return false;
 }
-
-module.exports = exibirAlunos()

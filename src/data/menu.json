@@ -1,0 +1,72 @@
+{
+    "menuopt":[
+                {
+                    "action":"Escola", 
+                    "link":"/escolas", 
+                    "title":"Escolas registradas", 
+                    "class":"btn btn-primary btn-block",
+                    "icon":"<i class='fas fa-building'></i>"
+
+                },
+                {
+                    "action":"Alunos", 
+                    "link":"/alunos", 
+                    "title":"Alunos", 
+                    "class":"btn btn-primary btn-block",
+                    "icon":"<i class='fa fa-user'></i>&nbsp;"
+                },
+                {
+                    "action":"Turmas", 
+                    "link":"/turmas", 
+                    "title":"cadastro de turmas", 
+                    "class":"btn btn-primary btn-block",
+                    "icon":"<i class='fa fa-users'></i>&nbsp;"
+                },
+                {
+                    "action":"Disciplinas", 
+                    "link":"/disciplinas", 
+                    "title":"", 
+                    "class":"btn btn-primary btn-block",
+                    "icon":"<i class='fas fa-book-open'></i>"
+                },
+                {
+                    "action":"Rubricas", 
+                    "link":"/rubricas", 
+                    "title":"",
+                    "class":"btn btn-primary btn-block", 
+                    "icon":"<i class='fas fa-weight'></i>"
+                },
+                {
+                    "action":"Avaliações", 
+                    "link":"/avaliacoes", 
+                    "title":"Avaliações",
+                    "class":"btn btn-primary btn-block", 
+                    "icon": "<i class='fas fa-file'></i>"
+                },
+                {
+                    "action":"Notas", 
+                    "link":"/notas", 
+                    "title":"", 
+                    "class":"btn btn-primary btn-block",
+                    "icon":"<i class='fas fa-sort-numeric-up'></i>"
+
+                },
+                {
+                    "action":"Relatórios", 
+                    "link":"/relatorios", 
+                    "title":"", 
+                    "class":"btn btn-primary btn-block",
+                    "icon":"<i class='fas fa-print'></i>"
+
+                },
+                {
+                    "action":"Buscar endereço", 
+                    "link":"/cep", 
+                    "title":"buscador de endereço", 
+                    "class":"btn btn-primary btn-block",
+                    "icon":"<i class='fas fa-print'></i>"
+
+                }
+    
+    ]
+}

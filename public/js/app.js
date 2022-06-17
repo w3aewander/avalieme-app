@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', (event) => {
     document.querySelector("#btn-toggle-menu").addEventListener("click", (evt)=>{
        let statusDisplay = document.getElementById("menu-lateral").style.display
@@ -10,17 +9,18 @@ document.addEventListener('DOMContentLoaded', (event) => {
     })
     
     loadMenu()
+
 })
 
 const loadMenu = () => {
     const menu = document.getElementById("menu-lateral")
     menu.innerHTML = "<div class='list-group-item'>Carregando opções do menu</div>"
-    fetch("data/menu.json")
+    fetch("/api/menulateral/carregar")
     .then( resp => resp.json()   
     .then( resp => {
 
         menu.innerHTML = ""
-        console.log(resp.menuopt)
+        //console.log(resp.menuopt)
 
         menu.innerHTML += `<div class='list-group-item'>
                         <a class="btn btn-primary text-start btn-block" href="/">
@@ -31,10 +31,10 @@ const loadMenu = () => {
 
         resp.menuopt.forEach(m => {
              menu.innerHTML += `<div class='list-group-item'>
-                                   <button onclick="${m.link}" class="${m.class}" title="${m.title}">
+                                   <a href="${m.link}" class="${m.class}" title="${m.title}">
                                    ${m.icon}
                                    <span class="px-2">${m.action.toUpperCase()}</span>
-                                   </button>
+                                   </a>
                                 </div>`
         })
       }) 
@@ -42,6 +42,8 @@ const loadMenu = () => {
 }
 
 const loadPage = (page) => {
+    if (page === "/" || page === "" ) return false;
+
    const cnt =  document.getElementById('content')
    const header = {"Content-type": "text/html"}
    fetch(page, {header: header, method: 'GET'}).then( resp => {
