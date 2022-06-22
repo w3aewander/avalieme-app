@@ -14,11 +14,6 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
 
-use App\Http\Controllers\EscolasController;
-use Api\Alunos\ApiAlunos as ApiAlunos;
-use Api\Menu\ApiMenuController as ApiMenu;
-
-
 require __DIR__ . '/../vendor/autoload.php';
 
 $app = AppFactory::create();
@@ -29,7 +24,7 @@ $app->get("/",'\App\Http\Controllers\HomeController:home' );
 //Rotas para escolas
 $app->get("/escolas",'\App\Http\Controllers\EscolasController:home');
 
-//Rotas para alunis
+//Rotas para alunos
 $app->get("/alunos",'\App\Http\Controllers\AlunosController:home');
 $app->get("/aluno/novo",'\App\Http\Controllers\AlunosController:create');
 
