@@ -13,8 +13,11 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
 
 
-class disciplinasController extends Controller {
+class DisciplinasController extends Controller {
 
+    public function __construct(){
+      parent::__construct();
+    }
     public function index() {
       $this->view = new View; 
     }

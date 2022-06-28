@@ -15,15 +15,14 @@ use Slim\Factory\AppFactory;
 
 use App\Resources\Views\View;
 
-class EscolasController
+class EscolasController extends Controller
 {
     private $view;
 
     
     public function __construct()
     {
-        $this->view = new View;
-        return "adfs";
+        parent::__construct();
     }
 
     public function index() {

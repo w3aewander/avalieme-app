@@ -15,6 +15,9 @@ use Slim\Factory\AppFactory;
 
 class NotasController extends Controller {
 
+    public function __construct() {
+      parent::__construct();
+    }
     
     public function home(Request $request, Response $response, array $args){
     

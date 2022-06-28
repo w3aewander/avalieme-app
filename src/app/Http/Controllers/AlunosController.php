@@ -15,8 +15,13 @@ use Slim\Factory\AppFactory;
 
 use App\Resources\Views\View;
 
-class AlunosController
+class AlunosController extends Controller
 {
+
+    public function __construct()
+    {
+      parent::__construct();
+    }
 
     public function home(Request $request, Response $response, array $args){
     

@@ -2,7 +2,7 @@
     <div class="card">
         <div class="card-header">
             <div class="card-title">
-                <i class="fa fa-building"></i> Cadastro de Escolas - Claudionor
+                <i class="fa fa-building"></i> Cadastro de Escolas
             </div>
         </div>
         <div class="card-body">
