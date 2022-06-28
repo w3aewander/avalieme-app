@@ -16,13 +16,20 @@
     
     public function index(Request $request, Response $response, array $args){
     
-        $form = "";
-        $form .= file_get_contents(__DIR__ . "/../../templates/header.html.php");
-        $form .= file_get_contents(__DIR__ . "/../../templates/login.html.php");
-        $form .= file_get_contents(__DIR__ . "/../../templates/footer.html.php");
+        \ob_start();
+
+        require_once __DIR__ . "/../../templates/header.html.php";
+        require_once __DIR__ . "/../../templates/login.html.php";
+        require_once __DIR__ . "/../../templates/footer.html.php";
+        
+        $form = \ob_get_contents();
 
         $response->getBody()->write($form);
   
+        \ob_clean();
+
+        \ob_end_flush();
+
         return $response->withHeader('Content-Type', 'text/html');
     }  
 

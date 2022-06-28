@@ -21,13 +21,20 @@ class CepController extends Controller
    
     public function home(Request $request, Response $response, array $args){
     
-      $cep = "";
-      $cep .= file_get_contents(__DIR__ . "/../../templates/header.html.php");
-      $cep .= file_get_contents(__DIR__ . "/../../templates/cep.html.php");
-      $cep .= file_get_contents(__DIR__ . "/../../templates/footer.html.php");
+      \ob_start();
+
+      require_once __DIR__ . "/../../templates/header.html.php";
+      require_once __DIR__ . "/../../templates/cep.html.php";
+      require_once __DIR__ . "/../../templates/footer.html.php";
+
+      $cep = \ob_get_contents();
 
       $response->getBody()->write($cep);
 
+      \ob_clean();
+
+      \ob_end_flush();
+      
       return $response->withHeader('Content-Type', 'text/html');
       
     }

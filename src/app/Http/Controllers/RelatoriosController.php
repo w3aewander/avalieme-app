@@ -19,13 +19,21 @@ class RelatoriosController extends Controller {
     }
     public function home(Request $request, Response $response, array $args){
     
-      $relatorios = "";
-      $relatorios .= file_get_contents(__DIR__ . "/../../templates/header.html.php");
-      //$alunos .= file_get_contents(__DIR__ . "/../../templates/alunos.html.php");
-      $relatorios .= file_get_contents(__DIR__ . "/../../templates/footer.html.php");
+      
+      \ob_start();
+
+      require_once __DIR__ . "/../../templates/header.html.php";
+      require_once __DIR__ . "/../../templates/alunos.html.php";
+      require_once __DIR__ . "/../../templates/footer.html.php";
+
+      $relatorios = \ob_get_contents();
 
       $response->getBody()->write($relatorios);
 
+      \ob_clean();
+
+      \ob_end_flush();
+      
       return $response->withHeader('Content-Type', 'text/html');
       
     }

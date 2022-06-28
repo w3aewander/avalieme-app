@@ -14,11 +14,24 @@ class ApiLogin  {
 
     private Bool $isAuth = FALSE;
 
+    public function logout(){
+        
+        $_SESSION['user_name'] = "";
+        $_SESSION['user_login'] = "";
+        $_SESSION['user_email'] = "";
+        $_SESSION['user_profile'] = "";
+        $_SESSION['isAuthenticated'] = FALSE;
+
+    }
     public function auth(String $email, String $senha){
         
         $con = \Persistencia\Conexao::conexao();
-
-        $sql =  "SELECT * FROM usuarios WHERE email = ?";
+         
+        $sql  =  " SELECT u.id, u.nome, u.login,  u.email, p.perfil, u.senha ";
+        $sql .=  " FROM usuarios u "; 
+        $sql .=  " INNER JOIN perfis p ";
+        $sql .=  " ON u.perfil_id = p.id ";
+        $sql .=  " WHERE u.email = ? ";
 
         //Prepared Statement
         $pstm = $con->prepare($sql);
@@ -36,20 +49,14 @@ class ApiLogin  {
                 $_SESSION['user_name'] = $credentials->nome;
                 $_SESSION['user_login'] = $credentials->login;
                 $_SESSION['user_email'] = $credentials->email;
-                $_SESSION['user_profile'] = $credentials->perfil_id;
+                $_SESSION['user_profile'] = $credentials->perfil;
                 $_SESSION['isAuthenticated'] = TRUE;
 
                 $this->isAuth = TRUE;
 
                 } else {
-                
-                $_SESSION['user_name'] = "";
-                $_SESSION['user_login'] = "";
-                $_SESSION['user_email'] = "";
-                $_SESSION['user_profile'] = "";
-                $_SESSION['isAuthenticated'] = FALSE;
-
-                $this->isAuth = FALSE;
+                    $this->logout();
+                    $this->isAuth = FALSE;
 
                 }
         }

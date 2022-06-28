@@ -24,13 +24,20 @@ class TurmasController extends Controller {
     
     public function home(Request $request, Response $response, array $args){
     
-      $turmas = "";
-      $turmas .= file_get_contents(__DIR__ . "/../../templates/header.html.php");
-      //$alunos .= file_get_contents(__DIR__ . "/../../templates/alunos.html.php");
-      $turmas .= file_get_contents(__DIR__ . "/../../templates/footer.html.php");
+      \ob_start();
+
+      require_once __DIR__ . "/../../templates/header.html.php";
+      require_once  __DIR__ . "/../../templates/alunos.html.php";
+      require_once __DIR__ . "/../../templates/footer.html.php";
+
+      $turmas = \ob_get_contents();
 
       $response->getBody()->write($turmas);
 
+      \ob_clean();
+
+      \ob_end_flush();
+      
       return $response->withHeader('Content-Type', 'text/html');
       
     }

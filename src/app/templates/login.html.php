@@ -11,18 +11,17 @@
 
 <div class="container bg-white p-5">
 
-<div class="card">
-    <div class="card-header bg-secondary text-white text-bold">
-        <div class="card-title">
-            <i class="far fa-user fa-fw"></i> Login
+    <div class="card">
+        <div class="card-header bg-secondary text-white text-bold">
+            <div class="card-title">
+                <i class="far fa-user fa-fw"></i> Login
+            </div>
         </div>
-    </div>
 
-    <div class="card-body">
-        <div class="form">
-            <!-- <form name="form-turma" action="" method="POST" onsubmit="return incluirAluno(evt,this);"> -->
+        <div class="card-body">
+            <div class="form">            
                 <div class="form-group py-3">
-                    <label for="email">email</label>
+                    <label for="email">E-mail</label>
                     <input type="email" id="email" value="" class="form-control">
                 </div>
                 <div class="form-group py-3">
@@ -35,16 +34,19 @@
                     </label>
                 </div>
 
-            <!-- </form> -->
+                <div class="card-text">
+                    <div id="message" class="text-danger"></div>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="card-footer">
-        <div class="d-flex justify-content-center w-100">
-            <button type="button" onclick="autenticar();" class="btn btn-block btn-success w-100"><i class="fas fa-unlock"></i> Entrar</button>
+        <div class="card-footer">
+            <div class="d-flex justify-content-center w-100">
+                <button type="button" onclick="autenticar();" class="btn btn-block btn-success w-100"><i class="fas fa-unlock"></i> Entrar</button>
+            </div>
         </div>
+
     </div>
 
-</div>
 </div>
 
 <script>
@@ -52,22 +54,27 @@
       const email = document.getElementById("email").value
       const senha = document.getElementById("senha").value
 
-      fetch ("/login/auth", 
-                { 
-                   method: 'POST', 
+      fetch ("/login/auth",
+                {
+                   method: 'POST',
                    headers: {'Content-type':'application/x-www-form-urlencoded'},
                    body: new URLSearchParams({
                                 'email': email,
                                 'senha': senha
-                        }), 
+                        }),
                 })
                 .then( resp => {
                     resp.json().then( resp => {
                         if ( resp.success ){
-                            location.href = "/";
+                            document.getElementById("message").innerHTML = "Sucesso. Redirencionando..."
+
+                            setTimeout( () =>{ location.href = "/" }, 3000)
+
+                        } else {
+                            document.getElementById("message").innerHTML = "Acesso não permitido."
                         }
                     })
-                    
+
                 })
                 .catch(e => console.log(e))
    }

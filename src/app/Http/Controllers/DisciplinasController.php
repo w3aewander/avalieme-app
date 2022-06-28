@@ -25,9 +25,9 @@ class DisciplinasController extends Controller {
     public function home(Request $request, Response $response, array $args){
     
       $disciplinas = "";
-      $disciplinas .= file_get_contents(__DIR__ . "/../../templates/header.html.php");
-      //$alunos .= file_get_contents(__DIR__ . "/../../templates/alunos.html.php");
-      $disciplinas .= file_get_contents(__DIR__ . "/../../templates/footer.html.php");
+      require_once __DIR__ . "/../../templates/header.html.php";
+      require_once __DIR__ . "/../../templates/alunos.html.php";
+      require_once __DIR__ . "/../../templates/footer.html.php";
 
       $response->getBody()->write($disciplinas);
 

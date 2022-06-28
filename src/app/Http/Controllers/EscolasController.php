@@ -31,14 +31,20 @@ class EscolasController extends Controller
     
     public function home(Request $request, Response $response, array $args){
     
-      $alunos = "";
+      \ob_start();
+      
+      include_once  __DIR__ . "/../../templates/header.html.php";
+      include_once __DIR__ . "/../../templates/escolas.html.php";  
+      /* $escolas = "<script src='js/alunos.js'></script>"; */
+      include_once __DIR__ . "/../../templates/footer.html.php";
 
-      $alunos = file_get_contents(__DIR__ . "/../../templates/header.html.php");
-      $alunos .= file_get_contents(__DIR__ . "/../../templates/escolas.html.php");
-      $alunos .= "<script src='js/alunos.js'></script>";
-      $alunos .= file_get_contents(__DIR__ . "/../../templates/footer.html.php");
-       
-      $response->getBody()->write($alunos);
+      $escolas = \ob_get_contents();
+
+      \ob_clean(); 
+      
+      \ob_end_flush();
+      
+      $response->getBody()->write($escolas);
 
       return $response->withHeader('Content-Type', 'text/html');
       
@@ -46,13 +52,18 @@ class EscolasController extends Controller
 
     public function create(Request $request, Response $response, array $args) {
 
-        $escolas = "";
+      \obs_start();
 
-      $escolas = file_get_contents(__DIR__ . "/../../templates/header.html.php");
-      $escolas .= file_get_contents(__DIR__ . "/../../templates/escolas.html.php");
+      require_once __DIR__ . "/../../templates/header.html.php";
+      require_once __DIR__ . "/../../templates/escolas.html.php";
+      require_once __DIR__ . "/../../templates/footer.html.php";
+      
+      $escolas = \ob_get_contents();
+      
+      \ob_clean();
 
-      $escolas .= file_get_contents(__DIR__ . "/../../templates/footer.html.php");
-       
+      \ob_end_clean();
+
       $response->getBody()->write($escolas);
 
       return $response->withHeader('Content-Type', 'text/html');

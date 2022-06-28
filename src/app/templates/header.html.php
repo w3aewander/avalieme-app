@@ -18,15 +18,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-        
+
     <link rel="stylesheet" href="./css/app.css">
 </head>
 
 <body>
 
-<div class="jumbotron bg-blue-100 p-4 mb-4">
-        <h1>AVALIEME - APP</h1>
-        <p>Avaliação do aluno - ALPHA</p>
+    <div class="jumbotron bg-blue-100 p-4 mb-4">
+            <h1>AVALIEME - APP</h1>
+            <p>Avaliação do aluno - ALPHA</p>
+            <div class="d-flex w-100 p-2 text-white justify-content-end align-items-center" style="z-index: 999">
+               <i class="fa fa-user fa-fw"></i> <?=$_SESSION['user_email'] ?? "" ?>|<?=$_SESSION['user_profile'] ?? "" ?>
+            </div>
     </div>
 
     <div class="b-menu">
@@ -34,16 +37,14 @@
            <i class="fa fa-bars fa-2x"></i>
         </button>
     </div>
-
+   
     <div class="d-flex px-1 w-100">
-        
+
         <div class="list-group" id="menu-lateral">
             <div class="list-group-item"></div>
         </div>
-        
+
         <div class="container">
             <div class="justify-center align-middle">
                 <session id="main" class="py-5">
                     <main class="content imagem-pagina-inicial" id="content" name="content">
-
-                   
