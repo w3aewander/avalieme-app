@@ -6,20 +6,23 @@
  * 
  */
 
+ namespace Api\Login;
 
+ use Psr\Http\Message\ResponseInterface as Response;
+ use Psr\Http\Message\ServerRequestInterface as Request;
  /**
   * Reliza o registro no sistema
   */
  class ApiRegistrarLogin {
     
-    public function registrar(){
-        
-        $dados =  $_POST;
-        $nome  =  filter_input(POST, 'nome');
-        $email =  $_POST['email'];
-        $login =  $_POST['login'];
-        $senha =  $_POST['senha'];
-        $perfil = $_POST['perfil'];
+    public function registrar(Request $request, Response $response){
+              
+        $data = $request->getParsedBody();
+        $nome =  $data['nome'];    
+        $email =  $data['email'];  
+        $login =  $data['login'];  
+        $senha =  $data['senha'];  
+        $perfil_id = $data['perfil_id']; 
     
         $con = \Persistencia\Conexao::conexao();
 
@@ -28,15 +31,20 @@
 
         $pstm = $con->prepare($sql);
 
-        $pstm->bindParam(1, $nome, \PDO::PARAM_STR);
-        $pstm->bindParam(2, $login, \PDO::PARAM_STR);
-        $pstm->bindParam(3, $email, \PDO::PARAM_STR);
-        $pstm->bindParam(4, $senha);
-        $pstm->bindParam(5, $perfil_id, \PDO::PARAM_INT);
+        $hashSenha = password_hash($senha, PASSWORD_BCRYPT);
+
+        $pstm->bindParam(':nome', $nome, \PDO::PARAM_STR);
+        $pstm->bindParam(':login', $login, \PDO::PARAM_STR);
+        $pstm->bindParam(':email', $email, \PDO::PARAM_STR);
+        $pstm->bindParam(':senha', $hashSenha);
+        $pstm->bindParam(':perfil_id', $perfil_id, \PDO::PARAM_INT);
 
         $isInserted =  $pstm->execute();
 
-        return $isInserted ;
+        $response->withHeader('Content-Type', 'application/json');
+        $response->getBody()->write(json_encode(['success'=> $isInserted]));
+
+        return $response ;
 
     }
  }

@@ -27,6 +27,7 @@ $app = AppFactory::create();
 
 $app->get("/login/auth", '\App\Http\Controllers\LoginController:index');
 $app->post("/login/auth", '\App\Http\Controllers\LoginController:auth');
+$app->post("/login/registrar", '\Api\Login\ApiRegistrarLogin:registrar');
     
 //Rota para HOME
 $app->get("/",'\App\Http\Controllers\HomeController:home' );

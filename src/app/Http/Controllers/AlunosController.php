@@ -27,33 +27,41 @@ class AlunosController extends Controller
     
       \ob_start();
   
-      include_once  __DIR__ . "/../../templates/header.html.php";
-      include_once __DIR__ . "/../../templates/alunos.html.php";
-      include_once __DIR__ . "/../../templates/footer.html.php";
+      require_once  __DIR__ . "/../../templates/header.html.php";
+      require_once __DIR__ . "/../../templates/alunos.html.php";
+      require_once __DIR__ . "/../../templates/footer.html.php";
 
       $alunos = \ob_get_contents();
 
       \ob_clean(); 
       
       \ob_end_flush();
-
+      
       $response->getBody()->write($alunos);
-
+      
       return $response->withHeader('Content-Type', 'text/html');
       
     }
 
     public function create(Request $request, Response $response, array $args) {
 
-      $alunos = "";
+      \ob_start();
 
-      $alunos .= file_get_contents(__DIR__ . "/../../templates/header.html.php");
-      $alunos .= file_get_contents(__DIR__ . "/../../templates/novoAluno.html.php");
-      $alunos .= file_get_contents(__DIR__ . "/../../templates/footer.html.php");
-       
+      require_once __DIR__ . "/../../templates/header.html.php";
+      require_once __DIR__ . "/../../templates/novoAluno.html.php";
+      require_once __DIR__ . "/../../templates/footer.html.php";
+      
+      $alunos = \ob_get_contents();
+
       $response->getBody()->write($alunos);
 
-      return $response->withHeader('Content-Type', 'text/html');
+      \ob_clean();
+
+      \ob_end_flush();
+
+      $response->withHeader('Content-Type', 'text/html');
+
+      return $response;
 
     }
 }
